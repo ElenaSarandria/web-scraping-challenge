@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Mission to Mars</title>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <link rel="stylesheet" href="../stylesheets/style.css">
+</head>
+
+<body>
+  <div class="container-fluid">
+    <div class="jumbotron text-center">
+      <h1>Mission to Mars</h1>
+      <p><a class="btn btn-primary btn-lg" href="/scrape" role="button">Scrape New Data</a></p>
+    </div>
+    <div class = "row row-grid">
+        <div class = "col-md-12">
+            <div class = "col-md-12">
+                <h2>Latest Mars News:</h2>
+                <h4>{{ mars_info.news_title }}</h4>
+                <p>{{ mars_info.news_p }}</p>
+                <hr>
+            </div>
+            <div class = "col-md-12">
+                <div class = "col-md-7">
+                    <img src="{{ mars_info.search_image_url }}" alt="Mars" align="left" width = 100%>
+                </div>
+            <div class = "col-md-5">
+                <h2>Current Weather on Mars:</h2>
+            </div>
+            <div class = "col-md-5">
+                <p>{{ mars_info.mars_weather_twitter}}</p>
+                <hr>
+            </div>
+            <div class = "col-md-5"> 
+                <h2>Mars Facts:</h2>
+            </div>
+            <div class = "col-md-5">
+                <p>{{mars_info.html_table | safe}}</p>
+                <hr>    
+            </div>
+        </div>
+    </div>
+    <div class = "col-md-12">
+        <hr>
+        <h1>Mars Hemispheres:</h1>
+    </div>
+        <div class = "col-md-12">   
+            {% for i in mars_info.hemisphere_image_urs %}
+        <div class = "col-md-6">
+            <img src = "{{ i.img_url }}" width=90%>
+            <h4>{{ i.title }}</h4>
+        </div>
+            {% endfor %}
+        </div>
+            <script src="https://code.jquery.com/jquery-3.2.1.js" integrity="sha256-DZAnKJ/6XZ9si04Hgrsxu/8s717jcIzLy3oi35EouyE=" crossorigin="anonymous"></script>
+            <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
+            crossorigin="anonymous">
+            </script>
+</body>
+
+</html>
